@@ -52,7 +52,7 @@ import TuitController from "./controllers/TuitController";
 import TuitDao from "./daos/TuitDao";
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/tuiter')
+mongoose.connect('mongodb+srv://NehaRamachandra:1234@cluster0.zmme2.mongodb.net/tuiter?retryWrites=true&w=majority');
 
 const cors = require('cors')
 const app = express();
