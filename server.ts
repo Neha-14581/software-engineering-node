@@ -50,6 +50,8 @@ import UserController from "./controllers/UserController";
 import UserDao from "./daos/UserDao";
 import TuitController from "./controllers/TuitController";
 import TuitDao from "./daos/TuitDao";
+import LikesController from "./controllers/LikesController";
+import LikesDao from "./daos/LikesDao";
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://NehaRamachandra:1234@cluster0.zmme2.mongodb.net/tuiter?retryWrites=true&w=majority');
@@ -67,6 +69,7 @@ app.get('/hello', (req: Request, res: Response) =>
 
 new UserController(app,new UserDao);
 new TuitController(app,new TuitDao);
+new LikesController(app, new LikesDao);
 
 /**
  * Start a server listening at port 4000 locally
