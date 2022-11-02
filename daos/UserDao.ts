@@ -1,24 +1,103 @@
-import User from "../models/User";
-import UserModel from "../mongoose/UserModel";
+/**
+ * @file Implements DAO managing data storage of users. Uses mongoose UserModel
+ * to integrate with MongoDB
+ */
+import UserModel from "../mongoose/users/UserModel";
+import User from "../models/users/User";
 import UserDaoI from "../interfaces/UserDao";
 
+/**
+ * @class UserDao Implements Data Access Object managing data storage
+ * of Users
+ * @property {UserDao} userDao Private single instance of UserDao
+ */
 export default class UserDao implements UserDaoI {
-    async findAllUsers(): Promise<User[]> {
-        return await UserModel.find();
+    private static userDao: UserDao | null = null;
+
+    /**
+     * Creates singleton DAO instance
+     * @returns UserDao
+     */
+    public static getInstance = (): UserDao => {
+        if(UserDao.userDao === null) {
+            UserDao.userDao = new UserDao();
+        }
+        return UserDao.userDao;
     }
-    async findUserById(uid: string): Promise<any> {
-        return await UserModel.findById(uid);
-    }
-    // @ts-ignore
-    async createUser(user: User): Promise<void> {
-        // @ts-ignore
-        return await UserModel.create(user);
-    }
-    async deleteUser(uid: string):  Promise<any> {
-        return await UserModel.deleteOne({_id: uid});
-    }
-    async updateUser(uid: string, user: User): Promise<any> {
-        // @ts-ignore
-        return await UserModel.updateOne({_id: uid}, {$set: user});
-    }
-}
+
+    private constructor() {}
+
+    /**
+     * Uses UserModel to retrieve all user documents from users collection
+     * @returns Promise To be notified when the users are retrieved from
+     * database
+     */
+    findAllUsers = async (): Promise<User[]> =>
+        UserModel.find().exec();
+
+    /**
+     * Uses UserModel to retrieve single user document from users collection
+     * @param {string} uid User's primary key
+     * @returns Promise To be notified when user is retrieved from the database
+     */
+    findUserById = async (uid: string): Promise<any> =>
+        UserModel.findById(uid);
+
+    /**
+     * Inserts user instance into the database
+     * @param {User} user Instance to be inserted into the database
+     * @returns Promise To be notified when user is inserted into the database
+     */
+    createUser = async (user: User): Promise<User> =>
+        UserModel.create(user);
+
+    /**
+     * Updates user with new values in database
+     * @param {string} uid Primary key of user to be modified
+     * @param {User} user User object containing properties and their new values
+     * @returns Promise To be notified when user is updated in the database
+     */
+    updateUser = async (uid: string, user: User): Promise<any> =>
+        UserModel.updateOne(
+            {_id: uid},
+            {$set: user});
+
+    /**
+     * Removes user from the database.
+     * @param {string} uid Primary key of user to be removed
+     * @returns Promise To be notified when user is removed from the database
+     */
+    deleteUser = async (uid: string): Promise<any> =>
+        UserModel.deleteOne({_id: uid});
+
+    /**
+     * Removes all users from the database. Useful for testing
+     * @returns Promise To be notified when all users are removed from the
+     * database
+     */
+    deleteAllUsers = async (): Promise<any> =>
+        UserModel.deleteMany({});
+
+    /**
+     * Removes users by their username
+     * @param username the username of the user that has to be removed
+     * @returns Promise to be notified when the specified user is removed from the database
+     */
+    deleteUsersByUsername = async (username: string): Promise<any> =>
+        UserModel.deleteMany({username});
+
+    /**
+     * Finds user by their credentials
+     * @param username the username of the user
+     * @param password the password of the user
+     */
+    findUserByCredentials = async (username: string, password: string): Promise<any> =>
+        UserModel.findOne({username: username, password: password});
+
+    /**
+     * Finds the user by their username
+     * @param username the username of the user
+     */
+    findUserByUsername = async (username: string): Promise<any> =>
+        UserModel.findOne({username});
+};
