@@ -3,6 +3,6 @@
  * documents in the BookMark collection
  */
 import mongoose from "mongoose";
-import BookMarkSchema from "./BookMarkSchema";
+import BookMarkSchema from "./BookmarkSchema";
 const BookMarkModel = mongoose.model("BookMarkModel", BookMarkSchema);
 export default BookMarkModel;
