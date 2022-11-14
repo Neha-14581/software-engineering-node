@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
 
 /**
- * @file Declares controller that can talk to the likes data access object model
+ * @file LikeController interface Represents web services for like resource
  */
 export default interface LikeControllerI {
     findAllUsersThatLikedTuit (req: Request, res: Response): void;

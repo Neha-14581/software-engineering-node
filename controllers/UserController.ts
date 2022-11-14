@@ -2,7 +2,7 @@
  * @file Controller RESTful Web service API for users resource
  */
 import UserDao from "../daos/UserDao";
-import User from "../models/users/User";
+import User from "../models/User";
 import {Express, Request, Response} from "express";
 import UserControllerI from "../interfaces/UserController";
 
@@ -34,6 +34,14 @@ export default class UserController implements UserControllerI {
         if(UserController.userController === null) {
             UserController.userController = new UserController();
 
+            // for testing without postman. Not RESTful
+            app.get("/api/users/create",
+                UserController.userController.createUser);
+            app.get("/api/users/:uid/delete",
+                UserController.userController.deleteUser);
+            app.get("/api/users/delete",
+                UserController.userController.deleteAllUsers);
+
             // RESTful User Web service API
             app.get("/api/users",
                 UserController.userController.findAllUsers);
@@ -46,13 +54,6 @@ export default class UserController implements UserControllerI {
             app.delete("/api/users/:uid",
                 UserController.userController.deleteUser);
             app.delete("/api/users",
-                UserController.userController.deleteAllUsers);
-            // for testing. Not RESTful
-            app.get("/api/users/create",
-                UserController.userController.createUser);
-            app.get("/api/users/id/:uid/delete",
-                UserController.userController.deleteUser);
-            app.get("/api/users/delete",
                 UserController.userController.deleteAllUsers);
         }
         return UserController.userController;
@@ -125,6 +126,4 @@ export default class UserController implements UserControllerI {
     deleteAllUsers = (req: Request, res: Response) =>
         UserController.userDao.deleteAllUsers()
             .then((status) => res.send(status));
-
-
 };

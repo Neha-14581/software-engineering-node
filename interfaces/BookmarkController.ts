@@ -1,11 +1,11 @@
 import {Request, Response} from "express";
 
 /**
- * @file Declares controller that can talk to the bookmarks data access object model
+ * @file BookMarkController interface Represents web services for bookmark resources
  */
-export default interface BookmarkControllerI {
-    findAllUsersThatBookmarkedTuit(req: Request, res: Response): void;
-    findAllTuitsBookmarkedByUser(req: Request, res: Response): void;
-    userBookmarksTuit(req: Request, res: Response): void;
-    userUnbookmarksTuit(req: Request, res: Response): void;
-}
+export default interface BookMarkControllerI {
+    findAllUsersThatBookMarkedTuit (req: Request, res: Response): void;
+    findAllTuitsBookmarkedByUser (req: Request, res: Response): void;
+    userBookmarkedTuit (req: Request, res: Response): void;
+    userUnBookMarksTuit (req: Request, res: Response): void;
+};

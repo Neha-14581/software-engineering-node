@@ -1,11 +1,11 @@
-/**
- * @file Declares API for Bookmarks related data accesss object methods
- */
-import BookmarkI from "../models/bookmarks/BookmarkI";
+import BookMark from "../models/BookMark";
 
-export default interface BookmarkDao {
-    findAllUsersThatBookmarkedTuit(tid: string): Promise<BookmarkI[]>;
-    findAllTuitsBookmarkedByUser(uid: string): Promise<BookmarkI[]>;
-    userBookmarksTuit(uid: string, tid: string): Promise<any>;
-    userUnBookmarksTuit(uid: string, tid: string): Promise<BookmarkI>;
-}
+/**
+ * @file Declares API for BookMark related data access object methods
+ */
+export default interface BookMarkI {
+    findAllUsersThatBookMarkedTuit (tid: string): Promise<BookMark[]>;
+    findAllTuitsBookmarkedByUser (uid: string): Promise<BookMark[]>;
+    userUnBookMarksTuit (tid: string, uid: string): Promise<any>;
+    userBookmarkedTuit (tid: string, uid: string): Promise<BookMark>;
+};

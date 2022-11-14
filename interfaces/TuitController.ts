@@ -1,8 +1,8 @@
 import {Request, Response} from "express";
-import Tuit from "../models/tuits/Tuit";
+import Tuit from "../models/Tuit";
 
 /**
- * @file Declares controller that can talk to the tuits data access object model
+ * @file TuitController interface Represents web services for tuit resources
  */
 export default interface TuitControllerI {
    findAllTuits (req: Request, res: Response): void;

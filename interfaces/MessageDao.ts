@@ -1,12 +1,11 @@
-import MessageI from "../models/messages/MessageI";
-import Message from "../models/messages/Message";
+import Message from "../models/Message";
 
 /**
  * @file Declares API for Messages related data access object methods
  */
 export default interface MessageDaoI {
-    findAllMessagesSentByUser(uid: string): Promise<MessageI[]>;
-    findAllMessagesSentToUser(uid: string): Promise<MessageI[]>;
-    deleteMessageSentToUser(uid: string, mid: string): Promise<any>;
-    userSendsAMessageToAnotherUser(uid: string, anotherUid: string, message: Message): Promise<any>;
-}
+    findAllMessagesSentByUser (uid: string): Promise<Message[]>;
+    findAllMessagesReceivedByUser (uid: string): Promise<Message[]>;
+    userSendsMessage (userid: string, uid: string, message: Message): Promise<any>;
+    userDeletesMessage (userid: string, uid: string): Promise<any>;
+};
