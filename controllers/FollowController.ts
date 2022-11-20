@@ -1,4 +1,3 @@
-
 /**
  * @file Controller RESTful Web service API for follow resource
  */
@@ -35,8 +34,8 @@ export default class FollowController implements FollowControllerI {
     public static getInstance = (app: Express): FollowController => {
         if(FollowController.followController === null) {
             FollowController.followController = new FollowController();
-            app.get("/api/users/:userid/follows", FollowController.followController.findAllUsersThatUserFollows);
-            app.get("/api/users/:userid/followed", FollowController.followController.findAllFollowersOfUsers);
+            app.get("/api/users/:uid/follows", FollowController.followController.findAllUsersThatUserFollows);
+            app.get("/api/users/:uid/followed", FollowController.followController.findAllFollowersOfUsers);
             app.post("/api/users/:userid/follows/:uid", FollowController.followController.userFollowsUser);
             app.delete("/api/users/:userid/unfollows/:uid", FollowController.followController.userUnfollowsUser);
         }

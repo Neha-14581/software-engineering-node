@@ -65,4 +65,4 @@ export default class FollowDao implements FollowDaoI {
      */
     userUnfollowsUser = async (userid: string, uid: string): Promise<any> =>
         FollowModel.deleteOne({userFollowing: userid, userFollowed: uid});
-}
+} 

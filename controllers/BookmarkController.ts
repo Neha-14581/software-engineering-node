@@ -1,10 +1,9 @@
-
 /**
  * @file Controller RESTful Web service API for bookmark resource
  */
 import {Express, Request, Response} from "express";
-import BookMarkDao from "../daos/BookmarkDao";
-import BookMarkControllerI from "../interfaces/BookmarkController";
+import BookMarkDao from "../daos/BookMarkDao";
+import BookMarkControllerI from "../interfaces/BookMarkController";
 
 /**
  * @class BookMarkController Implements RESTful Web service API for bookmark resource.
