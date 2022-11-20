@@ -109,6 +109,7 @@ export default class LikeController implements LikeControllerI {
             .then(like => res.json(like));
     }
 
+    //bug ffixed
 
     /**
      * @param {Request} req Represents request from client, including the
