@@ -3,9 +3,6 @@ import UserDao from "../daos/UserDao";
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-//Controller for authentication.
-
-
 const AuthenticationController = (app: Express) => {
 
     const userDao: UserDao = UserDao.getInstance();

@@ -3,8 +3,6 @@ import User from "../models/User";
 import Tuit from "../models/Tuit"
 axios.defaults.baseURL = 'https://software-engineering-node-dev4.herokuapp.com/api';
 
-//Axios url is updated.
-
 const findAllUsers = async () =>
     await axios.get('/users');
 
@@ -23,3 +21,6 @@ const deleteUser = async (uid: string) =>
 
 const findAllTuits = async () =>
     await axios.get('/tuits');
+
+
+

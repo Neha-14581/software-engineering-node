@@ -113,7 +113,7 @@ export default class TuitController implements TuitControllerI {
     updateTuit = (req: Request, res: Response) =>
         TuitController.tuitDao.updateTuit(req.params.uid, req.body)
             .then((status) => res.send(status));
-//bug is fixed in the above line.
+
     /**
      * @param {Request} req Represents request from client, including path
      * parameter tid identifying the primary key of the tuit to be removed
