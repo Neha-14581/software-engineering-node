@@ -71,3 +71,5 @@ const AuthenticationController = (app: Express) => {
 }
 
 export default AuthenticationController;
+
+//for authentication
