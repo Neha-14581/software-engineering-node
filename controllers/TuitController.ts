@@ -111,7 +111,7 @@ export default class TuitController implements TuitControllerI {
             .then((status) => res.send(status));
 
 
-//Added as per given in the A4 assignment.
+
 
     createTuitByUser = (req: Request, res: Response) => {
         // @ts-ignore
