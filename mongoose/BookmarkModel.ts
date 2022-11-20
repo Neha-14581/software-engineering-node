@@ -6,3 +6,5 @@ import mongoose from "mongoose";
 import BookMarkSchema from "./BookmarkSchema";
 const BookMarkModel = mongoose.model("BookMarkModel", BookMarkSchema);
 export default BookMarkModel;
+
+//bug fix
