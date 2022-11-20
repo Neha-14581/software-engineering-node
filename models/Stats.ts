@@ -5,6 +5,8 @@
  * @property {number} likes likes count a tuit
  * @property {number} dislikes dislikes count a tuit
  */
+
+//user related data access
 export default interface Stats {
     replies?: number,
     retuits: number,
