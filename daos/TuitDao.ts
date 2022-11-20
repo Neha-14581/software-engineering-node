@@ -1,4 +1,3 @@
-
 /**
  * @file Implements DAO managing data storage of tuits. Uses mongoose TuitModel
  * to integrate with MongoDB
@@ -41,7 +40,10 @@ export default class TuitDao implements TuitDaoI{
      * @returns Promise To be notified when tuit is retrieved from the database
      */
     findAllTuitsByUser = async (uid: string): Promise<Tuit[]> =>
-        TuitModel.find({postedBy: uid});
+        TuitModel.find({postedBy: uid})
+            .sort({'postedOn': -1})
+            .populate("postedBy")
+            .exec();
 
     /**
      * Uses TuitModel to retrieve single tuit document from tuits collection
@@ -71,6 +73,17 @@ export default class TuitDao implements TuitDaoI{
         TuitModel.updateOne(
             {_id: uid},
             {$set: tuit});
+    /**
+     * Updates likes count with new values in database
+     * @param {string} tid Primary key of tuit stas to be modified
+     * @param {any} newStats new stats object for the tuit to be updated
+     * @returns Promise To be notified when tuit stats is updated in the database
+     */
+    updateLikes = async (tid: string, newStats: any): Promise<any> =>
+        TuitModel.updateOne(
+            {_id: tid},
+            {$set: {stats: newStats}});
+
 
     /**
      * Removes tuit from the database.
@@ -79,4 +92,20 @@ export default class TuitDao implements TuitDaoI{
      */
     deleteTuit = async (uid: string): Promise<any> =>
         TuitModel.deleteOne({_id: uid});
+
+    /**
+     * Removes tuit from the database.
+     * @param {string} tid Primary key of tuit to be removed
+     * @returns Promise To be notified when user tuit is removed from the database
+     */
+    deleteTuitById = async (tid: string): Promise<any> =>
+        TuitModel.deleteOne({_id: tid});
+
+    /**
+     * Removes tuit from the database.
+     * @param {string} tuit content of the tuit to be removed
+     * @returns Promise To be notified when user tuit is removed from the database
+     */
+    deleteTuitByContent = async (tuit: string): Promise<any> =>
+        TuitModel.deleteMany({tuit});
 }
