@@ -1,5 +1,5 @@
 import UserDao from "../daos/UserDao";
-import {Express, Request} from "express";
+import {Express, Request, Response} from "express";
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
@@ -29,8 +29,30 @@ const AuthenticationController = (app: Express) => {
             res.json(insertedUser);
         }
     }
+
+    const profile = (req: Request, res: Response) => {
+        // @ts-ignore
+        const profile = req.session['profile'];
+        if (profile) {
+            profile.password = "";
+            res.json(profile);
+        } else {
+            res.sendStatus(403);
+        }
+    }
+
+    const logout = (req: Request, res: Response) => {
+        // @ts-ignore
+        req.session.destroy();
+        res.sendStatus(200);
+    }
+
+
+
     // @ts-ignore
     app.post("/api/auth/signup", signup);
+    app.post("/api/auth/profile", profile);
+    app.post("/api/auth/logout", logout);
 }
 
 export default AuthenticationController;
