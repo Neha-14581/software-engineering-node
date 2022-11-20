@@ -26,3 +26,4 @@ const TuitSchema = new mongoose.Schema<Tuit>({
     }
 }, {collection: "tuits"});
 export default TuitSchema;
+//uploaded
