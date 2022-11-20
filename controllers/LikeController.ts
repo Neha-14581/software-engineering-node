@@ -149,3 +149,5 @@ export default class LikeController implements LikeControllerI {
         }
     }
 };
+
+//bug fix
