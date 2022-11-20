@@ -23,10 +23,17 @@ import LikeController from "./controllers/LikeController";
 import BookmarkController from "./controllers/BookmarkController";
 import MessageController from "./controllers/MessageController";
 import FollowController from "./controllers/FollowController";
+
+
 const cors = require('cors')
+const session = require("express-session");
 const app = express();
+
+
 app.use(cors());
 app.use(express.json());
+
+
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -36,6 +43,23 @@ const options = {
     socketTimeoutMS: 45000,
     family: 4
 }
+
+
+
+// const app = express();
+let sess = {
+    secret: process.env.SECRET,
+    cookie: {
+        secure: false
+    }
+}
+
+if (process.env.ENV === 'PRODUCTION') {
+    app.set('trust proxy', 1) // trust first proxy
+    sess.cookie.secure = true // serve secure cookies
+}
+
+
 mongoose.connect('mongodb+srv://NehaRamachandra:1234@cluster0.zmme2.mongodb.net/tuiter?retryWrites=true&w=majority');
 app.use(cors());
 app.use(express.json());
