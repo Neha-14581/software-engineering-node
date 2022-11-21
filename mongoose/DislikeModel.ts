@@ -7,3 +7,4 @@ import DislikeSchema from "./DislikeSchema";
 
 const DislikeModel = mongoose.model("DislikeModel", DislikeSchema);
 export default DislikeModel;
+//dislike mongoose

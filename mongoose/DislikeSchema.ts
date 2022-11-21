@@ -14,3 +14,6 @@ const DislikeSchema = new mongoose.Schema<Dislike>({
     dislikedBy: {type: Schema.Types.ObjectId, ref: "UserModel"},
 }, {collection: "dislikes"});
 export default DislikeSchema;
+
+
+//dislike mongoose
