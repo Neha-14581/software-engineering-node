@@ -4,7 +4,7 @@ import User from "../models/User";
  * @file Declares API for user related data access object methods
  */
 
-//user login bug fix
+//user login bug fix..
 export default interface UserDaoI {
    findAllUsers (): Promise<User[]>;
    findUserById (uid: string): Promise<any>;
