@@ -5,7 +5,7 @@ import Tuit from "../models/Tuit";
  * @file TuitController interface Represents web services for tuit resources
  */
 
-//bug fix
+//bug fix..
 export default interface TuitControllerI {
    findAllTuits (req: Request, res: Response): void;
    findAllTuitsByUser (req: Request, res: Response): void;
