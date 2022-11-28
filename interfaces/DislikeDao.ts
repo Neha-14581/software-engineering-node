@@ -9,5 +9,3 @@ export default interface DislikeDaoI {
     findUserDislikesTuit (tid: string, uid: string): Promise<Dislike>;
     countHowManyDisikedTuit (tid: string): Promise<any>;
 };
-
-//interfaces added

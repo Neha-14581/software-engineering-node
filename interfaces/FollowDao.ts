@@ -3,9 +3,6 @@ import Follow from "../models/Follow";
 /**
  * @file Declares API for Follow related data access object methods
  */
-
-//Restful Web API service updated....
-
 export default interface FollowI {
     findAllUsersThatUserFollows (uid: string): Promise<Follow[]>;
     findAllFollowersOfUsers (uid: string): Promise<Follow[]>;

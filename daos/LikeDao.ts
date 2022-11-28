@@ -83,5 +83,3 @@ export default class LikeDao implements LikeDaoI {
     countHowManyLikedTuit = async (tid: string): Promise<any> =>
         LikeModel.count({tuit: tid});
 }
-
-//bug fix

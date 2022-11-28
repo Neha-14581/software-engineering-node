@@ -54,5 +54,3 @@ login('alice008', 'alice234')
 
 // userDao.findAllUsers()
 //   .then(users => console.log(users));
-
-//bug fix
