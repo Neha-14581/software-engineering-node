@@ -5,6 +5,7 @@
 import TuitModel from "../mongoose/TuitModel";
 import Tuit from "../models/Tuit";
 import TuitDaoI from "../interfaces/TuitDao";
+import UserModel from "../mongoose/UserModel";
 
 /**
  * @class TuitDao Implements Data Access Object managing data storage
@@ -93,6 +94,9 @@ export default class TuitDao implements TuitDaoI{
     deleteTuit = async (uid: string): Promise<any> =>
         TuitModel.deleteOne({_id: uid});
 
+
+    deleteAllTuit = async (): Promise<any> =>
+        UserModel.deleteMany({});
     //Data access object is updated.
 
     /**
