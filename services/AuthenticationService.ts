@@ -4,14 +4,17 @@ import mongoose from "mongoose";
 const userDao: UserDao = UserDao.getInstance();
 
 const PROTOCOL = "mongodb+srv";
-const DB_USERNAME = "meet";//process.env.DB_USERNAME;
-const DB_PASSWORD = "meet1234";//process.env.DB_PASSWORD;
-const HOST = "cluster0.zntvi.mongodb.net";
-const DB_NAME = "myFirstDatabase";
+const DB_USERNAME = "NehaRamachandra";//process.env.DB_USERNAME;
+const DB_PASSWORD = "1234";//process.env.DB_PASSWORD;
+const HOST = "cluster0.zmme2.mongodb.net";
+const DB_NAME = "tuiter";
 const DB_QUERY = "retryWrites=true&w=majority";
 const connectionString = `${PROTOCOL}://${DB_USERNAME}:${DB_PASSWORD}@${HOST}/${DB_NAME}?${DB_QUERY}`;
 // connect to the database
 mongoose.connect(connectionString);
+
+//mongodb+srv://NehaRamachandra:1234@cluster0.zmme2.mongodb.net/tuiter?retryWrites=true&w=majority
+
 
 
 export const login = (u: string, p: string) =>
