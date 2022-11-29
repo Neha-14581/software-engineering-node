@@ -15,5 +15,3 @@ const BookMarkSchema = new mongoose.Schema<BookMark>({
 }, {collection: "bookmark"});
 
 export default BookMarkSchema;
-
-//bug fix

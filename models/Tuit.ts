@@ -13,9 +13,6 @@ import Stats from "./Stats";
  * @property {Date} postedOn the date on which the tuit was posted
  * @property {Date} postedOn the date on which the tuit was posted
  */
-
-
-//user related data access
 export default interface Tuit {
     tuit: string,
     postedBy: User,

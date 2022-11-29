@@ -5,4 +5,3 @@ export default interface Dislike {
     tuit: Tuit,
     dislikedBy: User
 };
-//middletire added

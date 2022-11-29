@@ -3,8 +3,6 @@ import {Request, Response} from "express";
 /**
  * @file UserController interface Represents web services for user resources
  */
-
-//user login bug fix..
 export default interface UserControllerI {
    findAllUsers (req: Request, res: Response): void;
    findUserById (req: Request, res: Response): void;

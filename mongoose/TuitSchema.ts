@@ -1,7 +1,3 @@
-/**
- * @file Implements mongoose schema for Tuit
- */
-
 import mongoose, {Schema} from "mongoose";
 import Tuit from "../models/Tuit";
 

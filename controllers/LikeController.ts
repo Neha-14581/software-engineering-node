@@ -73,10 +73,6 @@ export default class LikeController implements LikeControllerI {
         const userId = uid === 'me' && profile ?
             profile._id : uid;
 
-        if (userId === "me") {
-            res.sendStatus(503);
-            return;
-        }
         LikeController.likeDao.findAllTuitsLikedByUser(userId)
             .then(likes => {
                 // filter out likes with null tuits. Only keep defined tuits
@@ -101,10 +97,6 @@ export default class LikeController implements LikeControllerI {
         const profile = req.session['profile'];
         const userId = uid === 'me' && profile ?
             profile._id : uid;
-        if (userId === "me") {
-            res.sendStatus(503);
-            return;
-        }
         LikeController.likeDao.findUserLikesTuit(userId, tid)
             .then(like => res.json(like));
     }
@@ -127,10 +119,6 @@ export default class LikeController implements LikeControllerI {
         const profile = req.session['profile'];
         const userId = uid === 'me' && profile ?
             profile._id : uid;
-        if (userId === "me") {
-            res.sendStatus(503);
-            return;
-        }
         try {
             const userAlreadyLikedTuit = await likeDao.findUserLikesTuit(userId, tid);
             const howManyLikedTuit = await likeDao.countHowManyLikedTuit(tid);
@@ -149,5 +137,4 @@ export default class LikeController implements LikeControllerI {
         }
     }
 };
-
-//bug fix
+ 
