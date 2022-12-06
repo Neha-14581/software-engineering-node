@@ -32,37 +32,37 @@ export default class FollowDao implements FollowDaoI {
      * @returns Promise To be notified when follow is retrieved from the database
      */
     findAllUsersThatUserFollows = async (uid: string): Promise<Follow[]> =>
-        FollowModel
-            .find({userFollowing: uid})
-            .populate("userFollowing")
-            .exec();
-
+    FollowModel
+        .find({userFollowing: uid})
+        .populate("userFollowing")
+        .exec();
+    
     /**
      * Uses FollowModel to retrieve all follow document from follow collection
      * @param {string} uid Users primary key
      * @returns Promise To be notified when follow is retrieved from the database
      */
     findAllFollowersOfUsers = async (uid: string): Promise<Follow[]> =>
-        FollowModel
-            .find({userFollowed: uid})
-            .populate("userFollowed")
-            .exec();
-
+    FollowModel
+        .find({userFollowed: uid})
+        .populate("userFollowed")
+        .exec();
+    
     /**
      * Inserts follow instance into the database
      * @param {string} userid  Primary key of user1
      * @param {string} userid  Primary key of user1
      * @returns Promise To be notified when follow is inserted into the database
-     */
+     */  
     userFollowsUser = async (userid: string, uid: string): Promise<any> =>
         FollowModel.create({userFollowing: userid, userFollowed: uid});
-
+    
     /**
      * Removes follow from the database.
      * @param {string} userid  Primary key of user1
      * @param {string} userid  Primary key of user1
      * @returns Promise To be notified when user follow is removed from the database
-     */
+     */     
     userUnfollowsUser = async (userid: string, uid: string): Promise<any> =>
         FollowModel.deleteOne({userFollowing: userid, userFollowed: uid});
-}
+} 

@@ -36,7 +36,7 @@ export default class MessageDao implements MessageDaoI {
             .find({from: userid})
             .populate("from")
             .exec();
-
+    
     /**
      * Uses MessageModel to retrieve all message document from message collection
      * @param {string} uid User's primary key
@@ -54,10 +54,10 @@ export default class MessageDao implements MessageDaoI {
      * @param {string} uid  Primary key of user2 receiver of the m
      * @param {Message} message Instance to be inserted into the database
      * @returns Promise To be notified when message is inserted into the database
-     */
+     */     
     userSendsMessage = async (userid: string, uid: string, message: Message): Promise<any> =>
         MessageModel.create({...message, from: userid, to: uid});
-
+    
     /**
      * Removes message from the database.
      * @param {string} userid  Primary key of user 1 message to be removed

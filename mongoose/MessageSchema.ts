@@ -7,7 +7,7 @@ import Message from "../models/Message";
 
 /**
  * @typedef Message Represents messages sent from one user to another user
- * @property {string} message the body or content of message to be sent
+ * @property {string} message the body or content of message to be sent 
  * @property {ObjectId[]} to Array of User IDs
  * @property {ObjectId[]} from Array of User IDs
  * @property {Date} sentOn The date the message was sent

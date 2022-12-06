@@ -9,7 +9,7 @@
  * @property {number} longitude longitude location of the user
  */
 export default interface Location {
-   latitude: number,
-   longitude: number
+    latitude: number,
+    longitude: number
 };
  

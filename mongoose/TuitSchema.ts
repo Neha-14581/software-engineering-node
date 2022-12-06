@@ -11,10 +11,19 @@ import Tuit from "../models/Tuit";
  * @property {ObjectId[]} postedBy Array of User IDs
  * @property {Date} postedOn the date on which the tuit was posted
  */
-const TuitSchema = new mongoose.Schema<Tuit>({
+ const TuitSchema = new mongoose.Schema<Tuit>({
     tuit: {type: String, required: true},
     postedBy: {type: Schema.Types.ObjectId, ref: "UserModel"},
-    postedOn: {type: Date, default: Date.now}
+    postedOn: {type: Date, default: Date.now},
+    image: String,
+    youtube: String,
+    avatarLogo: String,
+    imageOverlay: String,
+    stats: {
+        replies: {type: Number, default: 0},
+        retuits: {type: Number, default: 0},
+        likes: {type: Number, default: 0},
+        dislikes: {type: Number, default: 0}
+    }
 }, {collection: "tuits"});
-
 export default TuitSchema;

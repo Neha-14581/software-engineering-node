@@ -1,25 +1,24 @@
-
 /**
  * @file Controller RESTful Web service API for follow resource
  */
-import {Express, Request, Response} from "express";
-import MessageDao from "../daos/MessageDao";
-import MessageControllerI from "../interfaces/MessageController";
-
-/**
- * @class TuitController Implements RESTful Web service API for tuits resource.
- * Defines the following HTTP endpoints:
- * <ul>
- *     <li>POST /api/users/:userid/sendmessage/:uid to send a message</li>
- *     <li>GET /api/users/:userid/messagesent to retrieve all the messages sent by user</li>
- *     <li>GET /api/users/:uid/messagesreceived to retrieve all messages received by user</li>
- *     <li>DELETE /api/users/:userid/deletemessage/:uid to delete a message</li>
- * </ul>
- * @property {MessageDao} messageDao Singleton DAO implementing message CRUD operations
- * @property {MessageController} messageController Singleton controller implementing
- * RESTful Web service API
- */
-export default class MessageController implements MessageControllerI {
+ import {Express, Request, Response} from "express";
+ import MessageDao from "../daos/MessageDao";
+ import MessageControllerI from "../interfaces/MessageController";
+ 
+  /**
+  * @class TuitController Implements RESTful Web service API for tuits resource.
+  * Defines the following HTTP endpoints:
+  * <ul>
+  *     <li>POST /api/users/:userid/sendmessage/:uid to send a message</li>
+  *     <li>GET /api/users/:userid/messagesent to retrieve all the messages sent by user</li>
+  *     <li>GET /api/users/:uid/messagesreceived to retrieve all messages received by user</li>
+  *     <li>DELETE /api/users/:userid/deletemessage/:uid to delete a message</li>
+  * </ul>
+  * @property {MessageDao} messageDao Singleton DAO implementing message CRUD operations
+  * @property {MessageController} messageController Singleton controller implementing
+  * RESTful Web service API
+  */
+ export default class MessageController implements MessageControllerI {
     private static messageDao: MessageDao = MessageDao.getInstance();
     private static messageController: MessageController | null = null;
     /**
@@ -39,7 +38,7 @@ export default class MessageController implements MessageControllerI {
         return MessageController.messageController;
     }
     private constructor() {}
-
+    
     /**
      * Retrieves all messages sent by the user from the database
      * @param {Request} req Represents request from client, including the path
@@ -50,7 +49,7 @@ export default class MessageController implements MessageControllerI {
     findAllMessagesSentByUser = (req: Request, res: Response) =>
         MessageController.messageDao.findAllMessagesSentByUser(req.params.userid)
             .then(messagessent => res.json(messagessent));
-
+ 
     /**
      * Retrieves all messages received by the user from the database
      * @param {Request} req Represents request from client, including the path
@@ -64,7 +63,7 @@ export default class MessageController implements MessageControllerI {
 
     /**
      * @param {Request} req Represents request from client, including the
-     * path parameters userid and uid representing both the users userid for user
+     * path parameters userid and uid representing both the users userid for user 
      * to send message to another user
      * @param {Response} res Represents response to client, including the
      * body formatted as JSON containing the new message that was inserted in the
@@ -76,7 +75,7 @@ export default class MessageController implements MessageControllerI {
 
     /**
      * @param {Request} req Represents request from client, including the
-     * path parameters userid and uid representing both the users userid for user
+     * path parameters userid and uid representing both the users userid for user 
      * to unsend message
      * @param {Response} res Represents response to client, including status
      * on whether deleting the unsend was successful or not
@@ -84,4 +83,4 @@ export default class MessageController implements MessageControllerI {
     userDeletesMessage = (req: Request, res: Response) =>
         MessageController.messageDao.userDeletesMessage(req.params.userid, req.params.uid)
             .then((status) => res.json(status));
-}
+ }
